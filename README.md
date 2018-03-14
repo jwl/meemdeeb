@@ -5,6 +5,13 @@ A simple searchable and taggable meme database.
 ## Description
 
 
+## How to Use:
+
+### Backend:
+* change to `backend` directory
+* `npm run start`
+* open `localhost:4000`
+
 ## Schema
 
 ### Meme
