@@ -1,6 +1,6 @@
 # meemdeeb
 
-A simple searchable and tagable meme database.
+A simple searchable and taggable meme database.
 
 ## Description
 
@@ -17,3 +17,7 @@ A simple searchable and tagable meme database.
 ### Tag
 * `tagId` (int): id number
 * `tagName` (String): name of tag
+
+
+# References
+* https://github.com/iamshaunjp/graphql-playlist
