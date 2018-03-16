@@ -1,11 +1,30 @@
 const graphql = require('graphql');
 
-const { GraphQLObjectType, GraphQLString } = graphql;
+const { GraphQLObjectType, GraphQLString, GraphQLSchema } = graphql;
 
 const MemeType = new GraphQLObjectType({
   name: 'Meme',
   fields: ( ) => ({
-    id: { type: GraphQLString },
+    memeid: { type: GraphQLString },
     url: { type: GraphQLString }
   })
 });
+
+const RootQuery = new GraphQLObjectType({
+  name: 'RootQueryType',
+  fields: {
+    meme: {
+      type: MemeType,
+      args: { id: {type: GraphQLString }},
+      resolve(parent, args) {
+        // get data form db
+      }
+    }
+  }
+});
+
+module.exports = new GraphQLSchema({
+  query: RootQuery
+})
+
+
