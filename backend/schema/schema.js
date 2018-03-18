@@ -26,7 +26,7 @@ const RootQuery = new GraphQLObjectType({
       args: { id: {type: GraphQLInt }},
       resolve(parent, args) {
         // get data form db
-        return _.find(books, {id: args.id });
+        return _.find(memes, {id: args.id });
       }
     }
   }
