@@ -1,39 +1,51 @@
+
 const graphql = require('graphql');
 const _ = require('lodash');
 
-const { GraphQLObjectType, GraphQLString, GraphQLSchema } = graphql;
+// Load dummy data
+//const Memes = [
+  //{ memeid: 1, url: 'https://i.imgur.com/bX16KcN.gif' },
+  //{ memeid: 2, url: 'https://i.imgur.com/jzc9UkS.gif' },
+  //{ memeid: 3, url: 'https://i.imgur.com/0it3YM9.jpg' },
+//];
+const Memes = require('../data/memes');
 
-// dummy data
-var memes = [
-  { memeid: 1, url: 'https://i.imgur.com/bX16KcN.gif' },
-  { memeid: 2, url: 'https://i.imgur.com/jzc9UkS.gif' },
-  { memeid: 3, url: 'https://i.imgur.com/0it3YM9.jpg' },
-];
+const { 
+  GraphQLObjectType, 
+  GraphQLString, 
+  GraphQLSchema,
+  GraphQLID
+} = graphql;
 
 const MemeType = new GraphQLObjectType({
   name: 'Meme',
+  description: "This represents a meme",
   fields: ( ) => ({
-    memeid: { type: GraphQLInt },
+    memeid: { type: GraphQLID },
     url: { type: GraphQLString }
   })
 });
 
+// This is the Root Query
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
     meme: {
       type: MemeType,
-      args: { id: {type: GraphQLInt }},
+      args: { id: {type: GraphQLID }},
       resolve(parent, args) {
-        // get data form db
-        return _.find(memes, {id: args.id });
+        // get data from db
+        console.log(typeof(args.id));
+        return _.find(Memes, {id: args.id });
       }
     }
   }
 });
 
-module.exports = new GraphQLSchema({
+const MeemdeebSchema = new GraphQLSchema({
   query: RootQuery
 });
+
+module.exports = MeemdeebSchema;
 
 
