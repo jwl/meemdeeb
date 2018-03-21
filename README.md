@@ -28,3 +28,4 @@ A simple searchable and taggable meme database.
 
 # References
 * https://github.com/iamshaunjp/graphql-playlist
+* https://www.howtographql.com/graphql-js/1-getting-started/
