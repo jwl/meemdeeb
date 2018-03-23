@@ -32,7 +32,6 @@ const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
     meme: {
-      //type: new GraphQLList(MemeType),
       type: MemeType,
       args: {
         memeid: { type: GraphQLInt }
