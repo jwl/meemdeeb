@@ -12,6 +12,7 @@ const dummyMemes = [
 const { 
   GraphQLObjectType, 
   GraphQLString, 
+  GraphQLList,
   GraphQLSchema,
   GraphQLInt,
   GraphQLID
@@ -31,16 +32,20 @@ const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
     meme: {
+      //type: new GraphQLList(MemeType),
       type: MemeType,
-      args: { memeid: {type: GraphQLInt }},
+      args: {
+        memeid: { type: GraphQLInt }
+      },
       resolve(parent, args) {
         // get data from db
         console.log(typeof(args.memeid));
         return _.find(dummyMemes, {memeid: args.memeid });
+        //return dummyMemes;
       }
     },
     allMemes: {
-      type: MemeType,
+      type: new GraphQLList(MemeType),
       resolve(parent, args) {
         return dummyMemes;
       }
