@@ -38,9 +38,7 @@ const RootQuery = new GraphQLObjectType({
       },
       resolve(parent, args) {
         // get data from db
-        console.log(typeof(args.memeid));
         return _.find(dummyMemes, {memeid: args.memeid });
-        //return dummyMemes;
       }
     },
     allMemes: {

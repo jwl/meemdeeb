@@ -9,8 +9,8 @@ A simple searchable and taggable meme database.
 
 ### Backend:
 * change to `backend` directory
-* `npm run start`
-* open `localhost:4000`
+* `npm run start` or `npx nodemon app`
+* open `localhost:4000` in a browser
 
 ## Schema
 
